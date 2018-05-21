@@ -1,0 +1,76 @@
+
+
+                                          Organism CPP
+=====================================================================================================================================
+METHOD: Rotate()
+______________________________________________________________________________________________________________________________________
+    for_loop(Index, NumberOfCells)
+    {
+    // Cells[Index].Offset.x -= Cells[Index].Starting.x;
+    // Cells[Index].Offset.y -= Cells[Index].Starting.y;
+    //
+    // New.x = Cells[Index].Offset.x * c - Cells[Index].Offset.y * s;
+    // New.y = Cells[Index].Offset.x * s + Cells[Index].Offset.y * c;
+    // Cells[Index].Offset.x = New.x + Cells[Index].Starting.x;
+    // Cells[Index].Offset.y = New.y + Cells[Index].Starting.y;
+    }
+
+--------------------------
+
+     Velocity.x *= _COS(Angle);
+     Velocity.y *= _SIN(Angle);
+
+
+METHOD: ApplyForce()
+______________________________________________________________________________________________________________________________________
+#if 0
+  Vec2 Displacement;
+  Displacement = (Child->Offset - Parent->Offset) - Rest;
+ 
+  Child->Force  +=  (Displacement * -Tension);
+  Parent->Force -=  (Displacement * -Tension);
+#else 
+
+
+
+METHOD: Update()
+______________________________________________________________________________________________________________________________________
+
+    Vec2 Average;
+    for_loop(Index,NumberOfCells)
+    {
+       Average+= Cells[Index].Offset;
+    }
+    Average /= NumberOfCells;
+    Position += Average;
+
+                                      
+=====================================================================================================================================
+
+______________________________________________________________________________________________________________________________________
+                                                                                                                 
+    Vec2 Average;
+    for_loop(Index,NumberOfCells)
+    {
+       Average+= Cells[Index].Offset;
+    }
+    Average /= NumberOfCells;
+    Position += Average;
+
+=====================================================================================================================================
+______________________________________________________________________________________________________________________________________
+                                      
+                                                                                                                  
+=====================================================================================================================================
+______________________________________________________________________________________________________________________________________
+
+
+
+Favor Fast Code- YES did nothing
+Enable SSE Arch2 did nothing
+
+Enable FP Fast looks like it very very slightly increased FPS by about .1 frame per second.
+Disable Security checks gave about 3 FPS increase
+
+_FastCall Did nothing
+Removing Debug info gave about 3 FPS increase
